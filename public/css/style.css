@@ -1,0 +1,541 @@
+/* Custom Theme & Animations for Simple IoT World - Quantum Blue & Cyber Cyan */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=VT323&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  --font-main: 'Plus Jakarta Sans', sans-serif;
+  --font-lcd: 'VT323', monospace;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Quantum Blue & Cyber Cyan Palette (Primary Theme) */
+  --primary-color: #2563eb;
+  --primary-color-dark: #1d4ed8;
+  --primary-color-light: #60a5fa;
+  --accent-cyan: #0ea5e9;
+  --theme-gradient: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+  --theme-gradient-subtle: linear-gradient(135deg, rgba(37, 99, 235, 0.15) 0%, rgba(14, 165, 233, 0.05) 100%);
+  
+  /* Default Light Mode */
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.88);
+  --bg-card-hover: rgba(255, 255, 255, 0.98);
+  --border-color: rgba(226, 232, 240, 0.85);
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --shadow-main: 0 10px 25px -5px rgba(37, 99, 235, 0.08), 0 8px 10px -6px rgba(14, 165, 233, 0.04);
+  --shadow-glass: 0 8px 32px 0 rgba(37, 99, 235, 0.12);
+
+  /* LCD Colors */
+  --lcd-bg: #0f1d3a;
+  --lcd-text: #7dd3fc;
+  --lcd-glow: rgba(125, 211, 252, 0.5);
+}
+
+/* Dark Mode Overrides */
+html.dark {
+  --bg-primary: #090e17;
+  --bg-secondary: #0f172a;
+  --bg-card: rgba(15, 23, 42, 0.78);
+  --bg-card-hover: rgba(30, 41, 59, 0.88);
+  --border-color: rgba(51, 65, 85, 0.65);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --shadow-main: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+
+  /* LCD Cyber Cyan Glow in Dark Mode */
+  --lcd-bg: #071a2d;
+  --lcd-text: #7dd3fc;
+  --lcd-glow: rgba(125, 211, 252, 0.6);
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+}
+
+/* Glassmorphism Classes */
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-main);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(37, 99, 235, 0.35);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #2563eb, #0ea5e9, #38bdf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-btn {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #0ea5e9 100%);
+  background-size: 200% 200%;
+  transition: all 0.3s ease;
+}
+
+.gradient-btn:hover {
+  background-position: right center;
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.5);
+  transform: translateY(-2px);
+}
+
+.gradient-btn:active {
+  transform: translateY(0);
+}
+
+/* Heart Pulse Animation */
+@keyframes heartPulse {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.3); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.3); }
+  70% { transform: scale(1); }
+}
+
+.heart-pulse {
+  display: inline-block;
+  color: #3b82f6;
+  animation: heartPulse 1.4s infinite ease-in-out;
+}
+
+/* Online Pulse Animation */
+@keyframes pingSlow {
+  0% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+.ping-pulse {
+  animation: pingSlow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Realistic 16x2 LCD Display Screen */
+.lcd-container {
+  background: #131b24;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: inset 0 3px 6px rgba(0,0,0,0.8), 0 8px 24px rgba(0,0,0,0.4);
+  border: 4px solid #1e293b;
+  position: relative;
+}
+
+.lcd-bezel {
+  background: #0a0e14;
+  border-radius: 8px;
+  padding: 12px;
+  border: 2px solid #000;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.9);
+}
+
+.lcd-screen {
+  background-color: var(--lcd-bg);
+  color: var(--lcd-text);
+  font-family: var(--font-lcd);
+  font-size: 2.25rem;
+  line-height: 1.15;
+  letter-spacing: 0.25rem;
+  padding: 14px 20px;
+  border-radius: 4px;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+  text-shadow: 0 0 10px var(--lcd-glow), 0 0 20px var(--lcd-glow);
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* LCD Matrix grid overlay */
+.lcd-screen::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(37, 99, 235, 0.03), rgba(14, 165, 233, 0.01), rgba(37, 99, 235, 0.03));
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+}
+
+.lcd-line {
+  height: 2.6rem;
+  white-space: pre;
+  display: flex;
+  align-items: center;
+}
+
+/* Screw Pins on LCD Module */
+.screw {
+  width: 10px;
+  height: 10px;
+  background: #475569;
+  border-radius: 50%;
+  border: 1px solid #1e293b;
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.4);
+}
+
+/* ================= 3D INNOVATIVE LED SWITCH & BULB ================= */
+.led-power-switch {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3), inset 0 2px 4px rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 3px solid #334155;
+}
+
+.led-power-switch:hover {
+  transform: scale(1.05);
+}
+
+.led-power-switch:active {
+  transform: scale(0.96);
+}
+
+.led-power-switch.active {
+  background: linear-gradient(145deg, #3b82f6, #1d4ed8);
+  border-color: #93c5fd;
+  box-shadow: 0 0 50px rgba(37, 99, 235, 0.7), 0 0 100px rgba(59, 130, 246, 0.3), inset 0 2px 8px rgba(255,255,255,0.4);
+}
+
+.led-icon-glow {
+  color: #64748b;
+  transition: all 0.3s ease;
+}
+
+.led-power-switch.active .led-icon-glow {
+  color: #ffffff;
+  filter: drop-shadow(0 0 12px #fff) drop-shadow(0 0 20px #2563eb);
+}
+
+/* Virtual Glowing LED Lamp */
+.virtual-led {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #475569 20%, #1e293b 80%);
+  border: 4px solid #334155;
+  box-shadow: inset 0 3px 6px rgba(0,0,0,0.8);
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.virtual-led.on {
+  background: radial-gradient(circle, #ffffff 10%, #60a5fa 40%, #1d4ed8 90%);
+  border-color: #bfdbfe;
+  box-shadow: 0 0 40px #2563eb, 0 0 80px rgba(37, 99, 235, 0.8), 0 0 120px rgba(37, 99, 235, 0.4), inset 0 0 20px #ffffff;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(37, 99, 235, 0.4);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(37, 99, 235, 0.7);
+}
+
+/* Smooth Tab transitions */
+.tab-pane {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.tab-pane.active {
+  display: block;
+  opacity: 1;
+}
+
+.sensor-monitor-body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #030d1b;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #edf6ff;
+}
+
+.sensor-monitor {
+  width: min(1510px, calc(100vw - 60px));
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  padding: 36px 18px;
+}
+
+.sensor-card {
+  position: relative;
+  border-radius: 30px;
+  background: rgba(8, 22, 36, 0.9);
+  border: 1px solid rgba(98, 120, 150, 0.22);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.02), 0 14px 30px rgba(0,0,0,0.38);
+  padding: 26px 26px 16px;
+  overflow: hidden;
+  min-height: 560px;
+}
+
+.sensor-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent 25%);
+  pointer-events: none;
+}
+
+.sensor-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.sensor-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-size: 28px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.18);
+}
+
+.sensor-icon-temp {
+  background: linear-gradient(135deg, rgba(255,172,102,0.24), rgba(255,103,122,0.2));
+  color: #ffd3a0;
+}
+
+.sensor-icon-humidity {
+  background: linear-gradient(135deg, rgba(103,205,255,0.22), rgba(90,142,255,0.18));
+  color: #ccefff;
+}
+
+.sensor-meta {
+  flex: 1;
+}
+
+.sensor-title {
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  color: rgba(240, 246, 255, 0.82);
+  margin-bottom: 6px;
+}
+
+.sensor-device {
+  font-size: 20px;
+  font-weight: 700;
+  color: #edf5ff;
+}
+
+.sensor-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 20px;
+  font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.04);
+  white-space: nowrap;
+}
+
+.sensor-pill-warm {
+  background: rgba(255, 176, 79, 0.12);
+  color: #f0b164;
+  border-color: rgba(255, 176, 79, 0.2);
+}
+
+.sensor-pill-optimal {
+  background: rgba(103, 224, 255, 0.12);
+  color: #9ae6ff;
+  border-color: rgba(123, 211, 252, 0.28);
+}
+
+.sensor-content {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 16px;
+  align-items: center;
+  margin-top: 34px;
+  position: relative;
+  z-index: 1;
+}
+
+.sensor-dial {
+  position: relative;
+  width: min(250px, 72%);
+  aspect-ratio: 1;
+  margin: 0 auto;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: conic-gradient(from 220deg, rgba(255,255,255,0.08) 0 100%);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 18px), #000 0);
+  mask: radial-gradient(farthest-side, transparent calc(100% - 18px), #000 0);
+}
+
+.sensor-dial-temp {
+  background: conic-gradient(from 220deg, #ff5d93 0 31%, #ff8d4d 31% 58%, #ffb95f 58% 70%, rgba(255,255,255,0.08) 70% 100%);
+}
+
+.sensor-dial-humidity {
+  background: conic-gradient(from 210deg, #2ed9ff 0 62%, #29c5ff 62% 100%);
+}
+
+.dial-value-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  text-align: center;
+  color: #eff7ff;
+}
+
+.dial-value {
+  font-size: clamp(3rem, 4vw, 5rem);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.06em;
+}
+
+.dial-unit {
+  font-size: 1.1rem;
+  color: rgba(227, 234, 241, 0.8);
+  margin-top: 8px;
+}
+
+.sensor-side-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-height: 200px;
+  justify-content: center;
+}
+
+.info-box {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(154, 170, 191, 0.18);
+  border-radius: 14px;
+  padding: 18px 18px 16px;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.info-label {
+  font-size: 18px;
+  color: rgba(211, 224, 240, 0.8);
+  margin-bottom: 10px;
+}
+
+.info-value {
+  font-size: clamp(1.7rem, 2vw, 2.3rem);
+  font-weight: 700;
+  color: #edf7ff;
+  letter-spacing: -0.04em;
+}
+
+.sensor-scale {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 18px;
+  color: rgba(228, 236, 246, 0.78);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.scale-track {
+  position: relative;
+  flex: 1;
+  height: 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  overflow: hidden;
+}
+
+.scale-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: inherit;
+  height: 100%;
+}
+
+.scale-fill-temp {
+  width: 68%;
+  background: linear-gradient(90deg, #f9d766 0%, #ff7d59 42%, #ff4c93 100%);
+}
+
+.scale-fill-humidity {
+  width: 65%;
+  background: linear-gradient(90deg, #0f9fe8 0%, #20d6ff 52%, #4db6ff 100%);
+}
+
+@media (max-width: 980px) {
+  .sensor-monitor {
+    grid-template-columns: 1fr;
+    width: min(720px, calc(100vw - 30px));
+    padding: 18px 0 32px;
+  }
+
+  .sensor-card {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 620px) {
+  .sensor-header {
+    flex-wrap: wrap;
+  }
+
+  .sensor-pill {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .sensor-content {
+    grid-template-columns: 1fr;
+  }
+
+  .sensor-dial {
+    width: min(210px, 78%);
+  }
+
+  .sensor-side-panel {
+    min-height: auto;
+  }
+}

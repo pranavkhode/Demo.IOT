@@ -1,0 +1,42 @@
+[
+  {
+    "id": "sample_1791012018039",
+    "temperature": 33,
+    "humidity": 59,
+    "timestamp": 1791012017975,
+    "time": "12:50:17 pm",
+    "date": "03-10-2026"
+  },
+  {
+    "id": "sample_1791012078040",
+    "temperature": 34.3,
+    "humidity": 57,
+    "timestamp": 1791012077975,
+    "time": "12:51:17 pm",
+    "date": "03-10-2026"
+  },
+  {
+    "id": "sample_1791012138041",
+    "temperature": 34.3,
+    "humidity": 50,
+    "timestamp": 1791012137975,
+    "time": "12:52:17 pm",
+    "date": "03-10-2026"
+  },
+  {
+    "id": "sample_1791012198041",
+    "temperature": 33.6,
+    "humidity": 55,
+    "timestamp": 1791012197975,
+    "time": "12:53:17 pm",
+    "date": "03-10-2026"
+  },
+  {
+    "id": "sample_1791012258041",
+    "temperature": 35,
+    "humidity": 57,
+    "timestamp": 1791012257975,
+    "time": "12:54:17 pm",
+    "date": "03-10-2026"
+  }
+]

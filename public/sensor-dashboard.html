@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sensor Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body class="sensor-monitor-body">
+    <main class="sensor-monitor">
+      <section class="sensor-card sensor-card-temp">
+        <div class="sensor-header">
+          <div class="sensor-icon sensor-icon-temp">
+            <i class="fa-solid fa-temperature-half"></i>
+          </div>
+          <div class="sensor-meta">
+            <div class="sensor-title">TEMPERATURE</div>
+            <div class="sensor-device">DHT11 Sensor (D5)</div>
+          </div>
+          <div class="sensor-pill sensor-pill-warm">Normal / Warm</div>
+        </div>
+
+        <div class="sensor-content">
+          <div class="sensor-dial sensor-dial-temp">
+            <div class="dial-value-wrap">
+              <div class="dial-value">38.0</div>
+              <div class="dial-unit">°C Celsius</div>
+            </div>
+          </div>
+
+          <div class="sensor-side-panel">
+            <div class="info-box">
+              <div class="info-label">Fahrenheit</div>
+              <div class="info-value">100.4 °F</div>
+            </div>
+            <div class="info-box">
+              <div class="info-label">Heat Index</div>
+              <div class="info-value">Moderate</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sensor-scale">
+          <span>0 °C</span>
+          <div class="scale-track">
+            <div class="scale-fill scale-fill-temp"></div>
+          </div>
+          <span>50 °C</span>
+        </div>
+      </section>
+
+      <section class="sensor-card sensor-card-humidity">
+        <div class="sensor-header">
+          <div class="sensor-icon sensor-icon-humidity">
+            <i class="fa-solid fa-droplet"></i>
+          </div>
+          <div class="sensor-meta">
+            <div class="sensor-title">HUMIDITY</div>
+            <div class="sensor-device">DHT11 Sensor (D5)</div>
+          </div>
+          <div class="sensor-pill sensor-pill-optimal">Optimal</div>
+        </div>
+
+        <div class="sensor-content">
+          <div class="sensor-dial sensor-dial-humidity">
+            <div class="dial-value-wrap">
+              <div class="dial-value">59</div>
+              <div class="dial-unit">% Relative</div>
+            </div>
+          </div>
+
+          <div class="sensor-side-panel">
+            <div class="info-box">
+              <div class="info-label">Comfort Status</div>
+              <div class="info-value">Comfortable</div>
+            </div>
+            <div class="info-box">
+              <div class="info-label">Dew Point</div>
+              <div class="info-value">29.8 °C</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sensor-scale">
+          <span>0%</span>
+          <div class="scale-track">
+            <div class="scale-fill scale-fill-humidity"></div>
+          </div>
+          <span>100%</span>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
